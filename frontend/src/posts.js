@@ -8,7 +8,9 @@ const reducer = (state = INITIAL_STATE, action) => {
         default:
             return state;
         case 'initState':
-            return [...new Set(state.concat(action.target))]
+            return state.concat(action.target);
+        case 'createPost':
+            return state.concat(action.post)
     }
 };
 

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useState, useEffect } from "react";
 import { Container } from 'semantic-ui-react'
 import Table from "../Components/Table";
+import { func } from 'prop-types';
+import FormCreate from "../Components/FormCreate";
+
 const Home = (state) => {
     const [loading, setLoading] = useState(true);
 
@@ -19,6 +21,7 @@ const Home = (state) => {
     return (
         <Container>
             <Table />
+            <FormCreate />
         </Container>
     )
 
@@ -27,6 +30,10 @@ const Home = (state) => {
 const mapStateToProps = (state) => ({
     ...state,
 });
+
+Home.propTypes = {
+    initState: func.isRequired,
+}
 
 const mapDispatchProps = (dispatch) => ({
     initState: (target) => dispatch({ type: 'initState', target })

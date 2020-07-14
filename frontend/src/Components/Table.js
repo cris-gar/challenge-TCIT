@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Table } from 'semantic-ui-react';
-import { arrayOf, shape, string, } from 'prop-types';
+import { arrayOf, shape, string, number } from 'prop-types';
 
 const Body = ({ posts }) => {
-    console.log(posts);
     return (<Table celled>
         <Table.Header>
             <Table.Row>
@@ -31,6 +30,16 @@ const Body = ({ posts }) => {
 const mapStateToProps = (state) => ({
     posts: state,
 });
+
+Body.propTypes = {
+    posts: arrayOf(
+        shape({
+            id: number,
+            name: string,
+            description: string
+        })
+    ).isRequired
+}
 
 export default connect(
     mapStateToProps,
