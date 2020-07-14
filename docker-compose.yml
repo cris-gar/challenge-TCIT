@@ -2,11 +2,23 @@ version: "3"
 
 services:
 
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    stdin_open: true
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/frontend
+      - /frontend/node_modules
+    links:
+      - backend
+
   backend:
     build: ./backend
     container_name: backendo
     ports:
-    - "3000:3000"
+    - "9000:9000"
     command: bash -c "npx sequelize-cli db:migrate && npm run dev"
     volumes:
       - ./backend:/backend
