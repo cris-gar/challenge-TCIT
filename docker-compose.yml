@@ -1,0 +1,37 @@
+version: "3"
+
+services:
+
+  backend:
+    build: ./backend
+    container_name: backendo
+    ports:
+    - "3000:3000"
+    command: bash -c "npx sequelize-cli db:migrate && npm run dev"
+    volumes:
+      - ./backend:/backend
+      - /backend/node_modules
+    depends_on:
+      - postgres
+    links:
+      - postgres
+
+  postgres:
+    env_file:
+      - ./.env
+    image: postgres:12.3-alpine
+    container_name: postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=${PG_DATABASE}
+      - POSTGRES_USER=${PG_USER}
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
+    volumes:
+      - ./database:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+networks:
+  default:
+    external:
+      name: entrevista
