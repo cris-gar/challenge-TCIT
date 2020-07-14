@@ -30,8 +30,8 @@ module.exports = {
         });
     },
     delete: (req, res) => {
-        req.post.remove().then((countElementDelete) => {
-            res.json(countElementDelete)
+        req.post.destroy().then((countElementDelete) => {
+            res.json(req.post)
         }).catch(error => {
             res.json(error);
         });
