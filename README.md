@@ -8,6 +8,11 @@ The project uses an external network called "interview", which is created with t
 
 ### ` docker network create interview`
 
+## Configure file .ENV
+
+This file contains the data to create the postgres bdd as your username and password and which are also passed to Node to connect with the
+
+
 ## Running project
 
 Finally, to execute the project, the commands must be executed:
