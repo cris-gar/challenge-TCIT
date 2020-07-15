@@ -4,6 +4,7 @@ import { Container } from 'semantic-ui-react'
 import Table from "../Components/Table";
 import { func } from 'prop-types';
 import FormCreate from "../Components/FormCreate";
+import SearchPost from "../Components/SearchPost";
 
 const Home = (state) => {
     const [loading, setLoading] = useState(true);
@@ -20,6 +21,7 @@ const Home = (state) => {
     });
     return (
         <Container>
+            <SearchPost />
             <Table />
             <FormCreate />
         </Container>

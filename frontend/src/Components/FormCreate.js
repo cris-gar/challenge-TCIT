@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Form, Button } from 'semantic-ui-react'
-import { func, string } from 'prop-types';
+import { func } from 'prop-types';
 
 const FormCreate = ({ createPost }) => {
     const [name, setName] = useState('');
@@ -55,7 +55,7 @@ const FormCreate = ({ createPost }) => {
                     value={description}
                     onChange={handleChange}
                 />
-                <Button type="submit">Submit</Button>
+                <Button type="submit">Crear</Button>
             </Form.Group>
         </Form>
     )

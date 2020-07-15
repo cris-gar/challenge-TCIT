@@ -4,7 +4,7 @@ import { Table } from 'semantic-ui-react';
 import { arrayOf, shape, string, number } from 'prop-types';
 
 const Body = ({ posts, deletePost }) => {
-    const removePost = (e) => {
+    const removePost = (e,) => {
         e.preventDefault()
         const { target } = e;
         let postId = target.getAttribute('data-post-id');
@@ -27,7 +27,7 @@ const Body = ({ posts, deletePost }) => {
 
         <Table.Body>
             {
-                posts.map((post) => <Table.Row key={post.id}>
+                posts.map((post) => <Table.Row key={post.id} data-name={post.name}>
                     <Table.Cell >
                         {post.name}
                     </Table.Cell>
