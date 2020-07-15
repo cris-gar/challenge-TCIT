@@ -3,6 +3,8 @@ version: "3"
 services:
 
   backend:
+    env_file:
+      - ./.env
     build: ./backend
     container_name: backend
     ports:
@@ -15,6 +17,10 @@ services:
       - postgres
     links:
       - postgres
+    environment:
+      - POSTGRES_DB=${PG_DATABASE}
+      - POSTGRES_USER=${PG_USER}
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
 
   postgres:
     env_file:
