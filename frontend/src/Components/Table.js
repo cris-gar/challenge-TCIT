@@ -3,7 +3,19 @@ import { connect } from 'react-redux';
 import { Table } from 'semantic-ui-react';
 import { arrayOf, shape, string, number } from 'prop-types';
 
-const Body = ({ posts }) => {
+const Body = ({ posts, deletePost }) => {
+    const removePost = (e) => {
+        e.preventDefault()
+        const { target } = e;
+        let postId = target.getAttribute('data-post-id');
+        fetch(`http://localhost:9000/${postId}`, {
+            method: 'DELETE',
+        }).then((response) => response.json())
+            .then((post) => {
+                deletePost(post)
+            })
+    }
+
     return (<Table celled>
         <Table.Header>
             <Table.Row>
@@ -20,7 +32,7 @@ const Body = ({ posts }) => {
                         {post.name}
                     </Table.Cell>
                     <Table.Cell>{post.description}</Table.Cell>
-                    <Table.Cell>Cell</Table.Cell>
+                    <Table.Cell onClick={removePost} data-post-id={post.id}>Eliminar</Table.Cell>
                 </Table.Row>)
             }
         </Table.Body>
@@ -41,6 +53,11 @@ Body.propTypes = {
     ).isRequired
 }
 
+const mapDispatchProps = (dispatch) => ({
+    deletePost: (target) => dispatch({ type: 'deletePost', target })
+});
+
 export default connect(
     mapStateToProps,
+    mapDispatchProps,
 )(Body);

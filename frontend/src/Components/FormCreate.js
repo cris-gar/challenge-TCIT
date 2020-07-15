@@ -42,6 +42,7 @@ const FormCreate = ({ createPost }) => {
                     placeholder='Nombre'
                     required
                     name="name"
+                    value={name}
                     onChange={handleChange}
                 />
                 <Form.Input
@@ -51,6 +52,7 @@ const FormCreate = ({ createPost }) => {
                     label='Descripción'
                     placeholder='Descripción'
                     required
+                    value={description}
                     onChange={handleChange}
                 />
                 <Button type="submit">Submit</Button>
@@ -65,8 +67,6 @@ const mapStateToProps = (state) => ({
 
 FormCreate.propTypes = {
     createPost: func.isRequired,
-    name: string.isRequired,
-    description: string.isRequired,
 }
 
 const mapDispatchProps = (dispatch) => ({

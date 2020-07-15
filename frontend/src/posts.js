@@ -11,6 +11,8 @@ const reducer = (state = INITIAL_STATE, action) => {
             return state.concat(action.target);
         case 'createPost':
             return state.concat(action.post)
+        case 'deletePost':
+            return state.filter((post) => post.id !== action.target.id);
     }
 };
 
