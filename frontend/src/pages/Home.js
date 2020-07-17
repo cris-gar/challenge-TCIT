@@ -5,13 +5,13 @@ import Table from "../Components/Table";
 import { func } from 'prop-types';
 import FormCreate from "../Components/FormCreate";
 import SearchPost from "../Components/SearchPost";
-
+import { urlApi } from "../config";
 const Home = (state) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if(loading) {
-            fetch('http://localhost:9000')
+            fetch(urlApi)
                 .then(response => response.json())
                 .then((json) => {
                     setLoading(false)

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Form, Button } from 'semantic-ui-react'
 import { func } from 'prop-types';
+import { urlApi } from "../config";
 
 const FormCreate = ({ createPost }) => {
     const [name, setName] = useState('');
@@ -14,7 +15,7 @@ const FormCreate = ({ createPost }) => {
 
     const handleSubmit = (e) => {
         if (name !== '' && description !== '') {
-            fetch('http://localhost:9000', {
+            fetch(urlApi, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

@@ -2,13 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Table } from 'semantic-ui-react';
 import { arrayOf, shape, string, number } from 'prop-types';
+import { urlApi } from "../config";
 
 const Body = ({ posts, deletePost }) => {
     const removePost = (e,) => {
         e.preventDefault()
         const { target } = e;
         let postId = target.getAttribute('data-post-id');
-        fetch(`http://localhost:9000/${postId}`, {
+        fetch(urlApi + postId, {
             method: 'DELETE',
         }).then((response) => response.json())
             .then((post) => {
